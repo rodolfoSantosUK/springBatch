@@ -26,7 +26,10 @@ public class BatchConfig {
 
     @Bean
     public Job printOlaMundo() {
-        return jobBuilderFactory.get("printOlaMundo").start(imprimeOlaMundo()).incrementer(new RunIdIncrementer()).build();
+        return jobBuilderFactory.get("printOlaMundo")
+                .start(imprimeOlaMundo())
+                .incrementer(new RunIdIncrementer())
+                .build();
     }
 
     private Step imprimeOlaMundo() {
