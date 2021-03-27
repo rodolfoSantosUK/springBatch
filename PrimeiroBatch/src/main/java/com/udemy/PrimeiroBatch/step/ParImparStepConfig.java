@@ -20,7 +20,6 @@ public class ParImparStepConfig {
 
     @Bean
     public Step printParImparStep() {
-
         return stepBuilderFactory
                 .get("printParImparStep")
                 .<Integer, String>chunk(1)
