@@ -1,10 +1,14 @@
 package com.springbatch.arquivomultiplosformatos.dominio;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Cliente {
 	private String nome;
 	private String sobrenome;
 	private String idade;
 	private String email;
+	private List<Transacao> transacaoes = new ArrayList<Transacao>();
 
 	public String getNome() {
 		return nome;
@@ -38,9 +42,22 @@ public class Cliente {
 		this.email = email;
 	}
 
+	public List<Transacao> getTransacaoes() {
+		return transacaoes;
+	}
+
+	public void setTransacaoes(List<Transacao> transacaoes) {
+		this.transacaoes = transacaoes;
+	}
+
 	@Override
 	public String toString() {
-		return "Cliente{" + "nome='" + nome + "'" + ", sobrenome ='" + sobrenome + "'" + ", idade='" + idade + "'"
-				+ ", email='" + email + "'" + '}';
+		return "Cliente{" +
+				"nome='" + nome + '\'' +
+				", sobrenome='" + sobrenome + '\'' +
+				", idade='" + idade + '\'' +
+				", email='" + email + '\'' +
+				", transacaoes=" + transacaoes +
+				'}';
 	}
 }
