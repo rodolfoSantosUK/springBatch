@@ -22,6 +22,9 @@ public class JdbcPagingReaderStepConfig {
 				.<Cliente, Cliente>chunk(1)
 				.reader(jdbcPagingReader)
 				.writer(jdbcPagingWriter)
+				.faultTolerant()
+				.skip(Exception.class)
+				.skipLimit(2)
 				.build();
 	}
 }
