@@ -5,6 +5,7 @@ import org.springframework.batch.core.configuration.annotation.StepBuilderFactor
 import org.springframework.batch.item.ItemProcessor;
 import org.springframework.batch.item.ItemReader;
 import org.springframework.batch.item.ItemWriter;
+import org.springframework.batch.item.database.JdbcBatchItemWriter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -21,13 +22,13 @@ public class CriacaoContasStepConfig {
 	public Step criacaoContasStep(
 			ItemReader<Cliente> leituraClientesReader, 
 			ItemProcessor<Cliente, Conta> geracaoContaProcessor,
-			ItemWriter<Conta> impressaoContaWriter) {
+			JdbcBatchItemWriter<Conta> jdbcContaWriter) {
 		return stepBuilderFactory
 				.get("criacaoContasStep")
-				.<Cliente, Conta>chunk(100)
+				.<Cliente, Conta>chunk(1)
 				.reader(leituraClientesReader)
 				.processor(geracaoContaProcessor)
-				.writer(impressaoContaWriter)
+				.writer(jdbcContaWriter)
 				.build();
 	}
 }
